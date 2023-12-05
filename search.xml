@@ -4,11 +4,36 @@
   
     
     <entry>
-      <title>hexo部署遇到的问题</title>
-      <link href="/zblog/20231205/tt/"/>
-      <url>/zblog/20231205/tt/</url>
+      <title>git-used</title>
+      <link href="/zblog/20231205/git-used/"/>
+      <url>/zblog/20231205/git-used/</url>
       
-        <content type="html"><![CDATA[<h2 id="移动hexo文件遇到的问题"><a href="#移动hexo文件遇到的问题" class="headerlink" title="移动hexo文件遇到的问题"></a>移动hexo文件遇到的问题</h2>]]></content>
+        <content type="html"><![CDATA[<ol><li>创建远程仓库</li></ol><ul><li><p>创建文件夹 <code>mkdir test cd test</code></p></li><li><p>然后创建仓库 <code>git --bare init</code></p></li><li><p>然后本地创建文件夹 <code>git init </code> 随便在文件夹里创建个文件(<code>Readme.md</code>)</p></li><li><p>本地<code>git add .</code> <code>git commit -m 'first'</code></p></li><li><p>连接远程 <code>git remote add origin(名字,一般为origin) (url)ssh:test@ip/home/.../test</code></p></li><li><p>拉取远程<code>git pull origin</code></p></li><li><p>把刚才本地仓库同步给远程仓库<code>git push origin master</code>（主支）</p><ol start="2"><li>创建远程分支（分支名为<code>dev</code>）</li></ol><ul><li>本地创建并跳转分支 <code>git checkout -b dev</code>相当于<code>git branch dev 和 git checkout dev</code></li><li>关联远程分支 <code>git push -u origin dev</code>相当于<code>git push origin dev 和 git branch --set-upstream origin dev</code></li></ul></li></ul><ol start="2"><li>一些基本操作</li></ol><ul><li>查看所有远程和本地分支<code>git branch</code> -a</li><li>删除分支<code>git branch -D dev</code></li><li>创建本地分支<code>git branch dev</code></li><li>分支跳转<code>git checkout dev</code></li><li>查看当前分支状态<code>git status</code></li><li>查看提交次数<code>git commit .</code></li><li>…………. <a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903586120335367">参考链接</a></li></ul><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换到目标分支</span></span><br><span class="line">git checkout master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并 feature 分支到 master</span></span><br><span class="line">git merge feature</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并并指定合并提交消息</span></span><br><span class="line">git merge -m <span class="string">"Merge feature branch"</span> feature</span><br><span class="line"></span><br><span class="line"><span class="comment"># Fast-Forward 合并</span></span><br><span class="line">git merge --ff-only feature</span><br></pre></td></tr></tbody></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> git </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo部署遇到的问题</title>
+      <link href="/zblog/20231205/hexo-problem/"/>
+      <url>/zblog/20231205/hexo-problem/</url>
+      
+        <content type="html"><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>  将之前的hexo文件移动到别的电脑上，然后运行<code>hexo</code>命令发现报错。</p><h2 id="原因及解决"><a href="#原因及解决" class="headerlink" title="原因及解决"></a>原因及解决</h2><p>  是因为别的电脑没有安装对应版本的<code>hexo-cli</code>导致。因为我移到的电脑之前没有安装<code>hexo-cli</code>，当运行<code>npm i -g hexo-cli</code>命令时便会安装最新版，由此造成了版本问题。此时只需要安装正确版本或者删除<code>node_modules</code>文件和<code>package-lock.json</code>文件，更改package.json文件并重新安装对应的依赖</p>]]></content>
       
       
       <categories>
