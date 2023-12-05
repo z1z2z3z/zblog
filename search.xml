@@ -4,23 +4,23 @@
   
     
     <entry>
-      <title>git简单使用</title>
-      <link href="/zblog/20230417/git-xiang-guan-de/"/>
-      <url>/zblog/20230417/git-xiang-guan-de/</url>
+      <title>hexo部署遇到的问题</title>
+      <link href="/zblog/20231205/tt/"/>
+      <url>/zblog/20231205/tt/</url>
       
-        <content type="html"><![CDATA[<h4 id="git相关的"><a href="#git相关的" class="headerlink" title="git相关的"></a>git相关的</h4><ol><li><p>创建远程仓库</p><ul><li><p>创建文件夹   <code>mkdir test   cd test  </code></p></li><li><p>然后创建仓库 <code>git --bare init</code></p></li><li><p>然后本地创建文件夹    <code>git init </code>  随便在文件夹里创建个文件(<code>Readme.md</code>)   </p></li><li><p>本地<code>git add .</code>  <code>git commit -m 'first'</code></p></li><li><p>连接远程 <code>git remote add origin(名字,一般为origin) (url)ssh://test@ip/home/.../test</code></p></li><li><p>拉取远程<code>git pull origin</code>   git pull –rebase origin master</p></li><li><p>把刚才本地仓库同步给远程仓库<code>git push origin master</code>（主支）</p><ol start="2"><li>创建远程分支（分支名为<code>dev</code>）</li></ol><ul><li>本地创建并跳转分支  <code>git checkout -b dev</code>相当于<code>git branch dev 和 git checkout dev</code></li><li>关联远程分支 <code>git push -u origin dev</code>相当于<code>git push origin dev 和 git branch --set-upstream origin dev</code></li></ul></li></ul></li><li><p>一些基本操作</p><ul><li><p>查看所有远程和本地分支<code>git branch</code> -a</p></li><li><p>删除分支<code>git branch -D dev</code></p></li><li><p>创建本地分支<code>git branch dev</code></p></li><li><p>分支跳转<code>git checkout dev</code></p></li><li><p>查看当前分支状态<code>git status</code></p></li><li><p>查看提交次数<code>git commit .</code></p></li><li><p>克隆分支<code>git clone (-b name) url</code></p></li><li><p>………….          <a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903586120335367">参考链接</a></p></li><li><p>git  fetch 是更新分支的</p></li><li><p>git pull 是更新具体内容的</p></li><li><p>git push -u origin branch（也可以创建分支, 本地分支 关联远程  如果远程没有便创建  关联）</p></li><li><p>git reset –hard commitid（回滚）</p></li><li><p>git push -f （强制推送到远程）</p></li><li><p><strong>git commit –amend</strong> -m “” (修改刚提交的)</p></li><li><p>git rebase -i commitid（修改已经提交的历史commit消息） 把要改的pick 改为edit    然后git commit –amend -m “”  完成更改 git rebase –continue</p></li><li><p>删除远程分支  </p><pre class="line-numbers language-none"><code class="language-none">git push remote_name -d remote_branch_name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li></ul></li></ol><h4 id="在使用github仓库时，git-init初始化创建本地仓库后，需要git-branch-M-main创建并切换main分支"><a href="#在使用github仓库时，git-init初始化创建本地仓库后，需要git-branch-M-main创建并切换main分支" class="headerlink" title="在使用github仓库时，git init初始化创建本地仓库后，需要git branch -M main创建并切换main分支"></a>在使用github仓库时，<code>git init</code>初始化创建本地仓库后，需要<code>git branch -M main</code>创建并切换main分支</h4><p>以便后续的操作<code>git pull origin main --allow-unrelated-histories</code></p><p><code>git push origin main</code></p><ol start="3"><li>gitignore  操作</li></ol><ul><li><p>如果后面往gitignore里添加 别的需要忽略的  或者之前提交过的  想忽略</p></li><li><p>需要用以下命令<code>git rm -r --cached .</code>。</p></li></ul>]]></content>
+        <content type="html"><![CDATA[<h2 id="移动hexo文件遇到的问题"><a href="#移动hexo文件遇到的问题" class="headerlink" title="移动hexo文件遇到的问题"></a>移动hexo文件遇到的问题</h2>]]></content>
       
       
       <categories>
           
-          <category> 工具 </category>
+          <category> 其他 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 介绍 </tag>
+            <tag> 问题 </tag>
             
         </tags>
       
