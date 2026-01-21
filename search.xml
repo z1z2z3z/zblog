@@ -4,7 +4,20 @@
   
     
     <entry>
-      <title>git-used</title>
+      <title>acme申请SSL证书</title>
+      <link href="/zblog/20260121/acme/"/>
+      <url>/zblog/20260121/acme/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>前言</p></blockquote><p>最近阿里云提供了免费的云服务器试用，秉着羊毛不薅白不薅的心态，就领了一台，想着部署几个服务玩玩，于是去<code>namesilo</code>购买了个域名。由此变需要申请SSL证书了。</p><blockquote><p>环境准备</p></blockquote><p>1.首先在服务器安装<code>acme</code></p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl https://get.acme.sh | sh -s email=my@example.com</span><br><span class="line"><span class="built_in">alias</span> acme.sh=~/.acme.sh/acme.sh <span class="comment"># 便于直接使用</span></span><br></pre></td></tr></tbody></table></figure><p>2.然后进到<code>namesilo</code>控制台，先点击<code>domain manager</code>做好DNS域名解析，在里面更改域名映射使域名映射到服务器公网ip，如果以后会用到许多子域名的话可以同时加上对<code>*.yourdomain.com</code>的映射，也可以后面加，这个不重要。<br>3.还是在<code>namesilo</code>控制台，点击<code>api manager</code>，在下面的<code>api key</code>点击<code>generate</code>，注意不要勾选<code>Generate key for read-only access</code>，保存好生成的Key.</p><blockquote><p>申请证书</p></blockquote><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> Namesilo_Key=<span class="string">"Your key"</span> <span class="comment"># 刚才生产的key</span></span><br><span class="line">acme.sh --set-default-ca  --server  letsencrypt <span class="comment"># 使用letsencrypt证书方式</span></span><br><span class="line"><span class="comment"># 生成泛域名，即这套证书支持 yourdomain.com、*.yourdomain.com这样的域名</span></span><br><span class="line">acme.sh --issue --dns dns_namesilo -d yourdomain.com -d *.yourdomain.com --dnssleep 300</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure><p>注意尽量将<code>yourdomain.com</code>域名放在前面，如果将<code>*.yourdomain.com</code>放在前面，生成的文件名就是<code>*.yourdomain.com_ecc</code>，带有<code>*</code>.等待创建成功.</p><blockquote><p>使用</p></blockquote><p>在服务器<code>nginx</code>使用证书，配置如下：</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssl_certificate     <span class="string">"yourpath/fullchain.cer"</span>;</span><br><span class="line">ssl_certificate_key <span class="string">"yourpath/*.yourdomain.com.key"</span>;</span><br></pre></td></tr></tbody></table></figure><p>然后通过<code>https://</code>请求查看证书有效性即可。</p><p>以上便完成了通过acme申请泛域名证书并使用证书。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>git简单使用</title>
       <link href="/zblog/20231205/git-used/"/>
       <url>/zblog/20231205/git-used/</url>
       
